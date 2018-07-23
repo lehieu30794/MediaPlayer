@@ -18,12 +18,22 @@ public class MainActivity extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.song);
 
+
+
         Button playButton = (Button) findViewById(R.id.play_button);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 mediaPlayer.start();
+
+//                No need a class name here because only use once
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        Toast.makeText(MainActivity.this, "Done Playing", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
 
             }
